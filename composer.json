@@ -1,0 +1,39 @@
+{
+    "name": "hydrawiki/hydrawiki-codesniffer",
+    "description": "HydraWiki CodeSniffer Standards",
+    "keywords": [
+        "mediawiki",
+        "hydrawiki",
+        "codesniffer"
+    ],
+    "homepage": "https://www.gamepedia.com",
+    "license": "MIT",
+    "require": {
+        "php": ">= 7.1",
+        "composer/semver": "1.4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "HydraWiki\\": "HydraWiki"
+        }
+    },
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "1.0.0",
+        "jakub-onderka/php-console-highlighter": "0.3.2",
+        "mediawiki/minus-x": "0.3.1",
+        "phpunit/phpunit": "^7.3",
+        "mediawiki/mediawiki-codesniffer": "21.0.0"
+    },
+    "scripts": {
+        "test": [
+            "parallel-lint . --exclude vendor",
+            "phpunit $PHPUNIT_ARGS",
+            "phpcs -p -s",
+            "minus-x check ."
+        ],
+        "fix": [
+            "minus-x fix .",
+            "phpcbf"
+        ]
+    }
+}

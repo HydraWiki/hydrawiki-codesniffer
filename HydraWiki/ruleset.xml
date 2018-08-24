@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset name="HydraWiki">
+
+	<description>A coding standard for HydraWiki.</description>
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+        <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
+    </rule>
+	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
+		<properties>
+			<property name="spacing" value="0" />
+			<property name="ignoreNewlines" value="true" />
+		</properties>
+	</rule>
+    <!-- exclude common folders from version control or build tools -->
+	<exclude-pattern type="relative">^\.git</exclude-pattern>
+	<exclude-pattern type="relative">^vendor</exclude-pattern>
+	<exclude-pattern type="relative">^node_modules</exclude-pattern>
+</ruleset>
