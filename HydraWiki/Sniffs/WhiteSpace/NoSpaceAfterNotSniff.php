@@ -24,7 +24,7 @@ class NoSpaceAfterNotSniff implements Sniff {
 	 */
 	public function register() {
 		return [T_BOOLEAN_NOT];
-	}// end register()
+	}
 
 	/**
 	 * Processes this test, when one of its tokens is encountered.
@@ -53,6 +53,5 @@ class NoSpaceAfterNotSniff implements Sniff {
 		if ($fix === true) {
 			$phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
 		}
-	}// end process()
-
-}// end class
+	}
+}

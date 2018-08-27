@@ -1,18 +1,50 @@
 <?xml version="1.0"?>
 <ruleset name="HydraWiki">
-
 	<description>A coding standard for HydraWiki.</description>
+	<!-- Apply MediaWiki ruleset without SpaceyParenthesis -->
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
         <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
     </rule>
+	<!-- MediaWiki Adjustments -->
+	<rule ref="MediaWiki.NamingConventions.PrefixedGlobalFunctions">
+        <properties>
+            <property name="ignoreList" type="array" value="bfNormalizeTitleStrReplace,bfNormalizeTitleStrTr,cdbShowHelp,codepointToUtf8,compare_point,cssfilter,escapeSingleString,findAuxFile,findFiles,getEscapedProfileUrl,getFileCommentFromSourceWiki,getFileUserFromSourceWiki,hexSequenceToUtf8,mccGetHelp,mccShowUsage,mimeTypeMatch,moveToExternal,NothingFunction,NothingFunctionData,resolveStub,resolveStubs,showUsage,splitFilename,utf8ToCodepoint,utf8ToHexSequence" />
+        </properties>
+    </rule>
+    <rule ref="MediaWiki.NamingConventions.ValidGlobalName">
+        <properties>
+            <property name="ignoreList" type="array" value="$IP,$messageMemc,$parserMemc" />
+        </properties>
+    </rule>
+	<rule ref="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Generic.ControlStructures.InlineControlStructure.NotAllowed">
+		<severity>0</severity>
+	</rule>
+	<!-- Apply HydraWiki Whitespace rules -->
 	<rule ref="Generic.WhiteSpace.ArbitraryParenthesesSpacing">
 		<properties>
 			<property name="spacing" value="0" />
 			<property name="ignoreNewlines" value="true" />
 		</properties>
 	</rule>
+	<rule ref="PSR2.ControlStructures.ControlStructureSpacing" />
+	<rule ref="PSR2.Methods.FunctionCallSignature" />
+	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
+	<rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing" />
+	<rule ref="Squiz.Strings.ConcatenationSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="ignoreNewlines" value="true" />
+		</properties>
+	</rule>
+
     <!-- exclude common folders from version control or build tools -->
 	<exclude-pattern type="relative">^\.git</exclude-pattern>
 	<exclude-pattern type="relative">^vendor</exclude-pattern>
 	<exclude-pattern type="relative">^node_modules</exclude-pattern>
+	<exclude-pattern type="relative">^extensions/</exclude-pattern>
+    <exclude-pattern type="relative">^skins/</exclude-pattern>
 </ruleset>
