@@ -30,10 +30,21 @@
 		</properties>
 	</rule>
 	<rule ref="PSR2.ControlStructures.ControlStructureSpacing" />
-	<rule ref="PSR2.Methods.FunctionCallSignature" />
+	<rule ref="PSR2.Methods.FunctionCallSignature">
+		<properties>
+			<property name="indent" value="1" />
+		</properties>
+	</rule>
+	<rule ref="PSR2.Methods.FunctionCallSignature.OpeningIndent">
+		<severity>0</severity>
+	</rule>
 	<rule ref="Squiz.ControlStructures.ForEachLoopDeclaration" />
 	<rule ref="Squiz.ControlStructures.ForLoopDeclaration" />
-	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing" />
+	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
+		<properties>
+			<property name="equalsSpacing" value="1" />
+		</properties>
+	</rule>
 	<rule ref="Squiz.Strings.ConcatenationSpacing">
 		<properties>
 			<property name="spacing" value="1" />
