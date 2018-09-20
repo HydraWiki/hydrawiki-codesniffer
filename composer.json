@@ -8,15 +8,20 @@
     ],
     "homepage": "https://www.gamepedia.com",
     "license": "MIT",
-    "require": {
-        "php": ">= 7.1",
-        "composer/semver": "1.4.2",
-        "mediawiki/mediawiki-codesniffer": "21.0.0"
-    },
     "autoload": {
         "psr-4": {
             "HydraWiki\\": "HydraWiki"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">= 7.1",
+        "composer/semver": "1.4.2",
+        "mediawiki/mediawiki-codesniffer": "21.0.0"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "1.0.0",
@@ -27,7 +32,7 @@
     "scripts": {
         "test": [
             "parallel-lint . --exclude vendor",
-            "phpunit $PHPUNIT_ARGS",
+            "phpunit",
             "phpcs -p -s",
             "minus-x check ."
         ],
