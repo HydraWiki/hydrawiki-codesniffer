@@ -32,6 +32,7 @@ class LicenseCommentSniff implements Sniff {
 	private $replacements = [
 		'GNU General Public Licen[sc]e 2(\.0)? or later' => 'GPL-2.0-or-later',
 		'GNU GPL v2\+' => 'GPL-2.0-or-later',
+		'All Rights Reserved(\.)?' => 'Proprietary'
 	];
 
 	/**
@@ -262,7 +263,7 @@ class LicenseCommentSniff implements Sniff {
 			// Make sure the entire license matches the regex, and
 			// then a sanity check that the new replacement is valid too
 			if (preg_match("/^$regex$/", $license) === 1
-				&& $spdx->validate($identifier)
+				&& ($spdx->validate($identifier) || $this->isValidProprietaryLicense($identifier))
 			) {
 				$fixable = $identifier;
 				break;
