@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Curse Inc.
+ * NoSpaceAfterNotSniff
+ *
+ * @author		Samuel Hilson
+ * @license		MIT
+ * @package		HydraWiki
+ * @link		http://www.curse.com/
+ *
+ **/
 namespace HydraWiki\Sniffs\WhiteSpace;
 
 use PHP_CodeSniffer\Sniffs\Sniff;
@@ -36,10 +45,6 @@ class NoSpaceAfterNotSniff implements Sniff {
 	 * @return void
 	 */
 	public function process(File $phpcsFile, $stackPtr) {
-		if (!$phpcsFile) {
-
-		}
-
 		$tokens = $phpcsFile->getTokens();
 		$spacing = 0;
 		if ($tokens[($stackPtr + 1)]['code'] === T_WHITESPACE) {

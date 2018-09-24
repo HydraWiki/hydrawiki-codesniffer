@@ -4,6 +4,7 @@
 	<!-- Apply MediaWiki ruleset without SpaceyParenthesis -->
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
         <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
+		<exclude name="MediaWiki.Commenting.LicenseComment" />
     </rule>
 	<!-- MediaWiki Adjustments -->
 	<rule ref="MediaWiki.NamingConventions.PrefixedGlobalFunctions">
