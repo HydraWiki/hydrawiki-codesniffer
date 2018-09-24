@@ -1,6 +1,13 @@
 <?php
 /**
+ * Curse Inc.
+ * LicenseCommentSniff
+ *
+ * @author		Samuel Hilson
  * @license		MIT
+ * @package		HydraWiki
+ * @link		http://www.curse.com/
+ *
  **/
 namespace HydraWiki\Sniffs\Commenting;
 
@@ -48,7 +55,9 @@ class LicenseCommentSniff implements Sniff {
 		$this->file = $phpcsFile;
 		$this->tokens = $this->file->getTokens();
 		$this->end = $this->tokens[$stackPtr]['comment_closer'];
-		$this->spdx = $spdx;
+		if ($spdx !== null) {
+			$this->spdx = $spdx;
+		}
 	}
 
 	/**
@@ -243,6 +252,7 @@ class LicenseCommentSniff implements Sniff {
 		$spdx = $this->getLicenseValidator();
 
 		$valid = $spdx->validate($license);
+
 		if ($valid) {
 			return;
 		}
