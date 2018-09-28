@@ -3,12 +3,19 @@
  * Curse Inc.
  * NoSpaceAfterNotSniff
  *
- * @author		Samuel Hilson
- * @license		MIT
- * @package		HydraWiki
- * @link		http://www.curse.com/
+ * This file was copied from PHP_CodeSniffer before being modified
+ * File: Standards/Generic/Sniffs/Formatting/SpaceAfterNotSniff.php
+ * From repository: https://github.com/squizlabs/PHP_CodeSniffer
  *
- **/
+ * Ensures there is no space after a NOT operator.
+ *
+ * @package PHP_CodeSniffer
+ * @author Greg Sherwood <gsherwood@squiz.net>
+ * @author Samuel Hilson <shhilson@curse.com>
+ * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
+ * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD-3-Clause
+ */
+
 namespace HydraWiki\Sniffs\WhiteSpace;
 
 use PHP_CodeSniffer\Sniffs\Sniff;

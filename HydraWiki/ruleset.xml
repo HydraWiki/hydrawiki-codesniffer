@@ -53,6 +53,14 @@
 		</properties>
 	</rule>
 
+	<!-- set a resonable line length -->
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="120"/>
+			<property name="absoluteLineLimit" value="0"/>
+		</properties>
+	</rule>
+
     <!-- exclude common folders from version control or build tools -->
 	<exclude-pattern type="relative">^\.git</exclude-pattern>
 	<exclude-pattern type="relative">^vendor</exclude-pattern>
