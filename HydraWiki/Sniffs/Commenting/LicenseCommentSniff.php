@@ -3,12 +3,16 @@
  * Curse Inc.
  * LicenseCommentSniff
  *
- * @author		Samuel Hilson
- * @license		MIT
- * @package		HydraWiki
- * @link		http://www.curse.com/
+ * This file was copied from MediaWiki Codesniffer before being modified
+ * File: MediaWiki/Sniffs/Commenting/LicenseCommentSniff.php
+ * From repository: https://github.com/wikimedia/mediawiki-tools-codesniffer
  *
- **/
+ * @package	HydraWiki
+ * @author Dieser Benutzer
+ * @author Samuel Hilson <shhilson@curse.com>
+ * @copyright https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/COPYRIGHT
+ * @license https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
+ */
 namespace HydraWiki\Sniffs\Commenting;
 
 use Composer\Spdx\SpdxLicenses;
