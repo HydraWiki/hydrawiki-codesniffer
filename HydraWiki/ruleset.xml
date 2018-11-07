@@ -45,6 +45,8 @@
 	<rule ref="Squiz.Functions.FunctionDeclarationArgumentSpacing">
 		<properties>
 			<property name="equalsSpacing" value="1" />
+			<property name="requiredSpacesAfterOpen" value="0" />
+			<property name="requiredSpacesBeforeClose" value="0" />
 		</properties>
 	</rule>
 	<rule ref="Squiz.Strings.ConcatenationSpacing">
