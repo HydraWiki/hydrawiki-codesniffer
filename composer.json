@@ -21,7 +21,7 @@
     "require": {
         "php": ">= 7.1",
         "composer/semver": "1.4.2",
-        "mediawiki/mediawiki-codesniffer": "21.0.0"
+        "mediawiki/mediawiki-codesniffer": "22.0.0"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "1.0.0",

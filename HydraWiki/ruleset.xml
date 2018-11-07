@@ -5,6 +5,7 @@
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
         <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
 		<exclude name="MediaWiki.Commenting.LicenseComment" />
+		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
     </rule>
 	<!-- MediaWiki Adjustments -->
 	<rule ref="MediaWiki.NamingConventions.PrefixedGlobalFunctions">
