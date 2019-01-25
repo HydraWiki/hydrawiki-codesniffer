@@ -4,6 +4,7 @@
 	<!-- Apply MediaWiki ruleset without SpaceyParenthesis -->
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
         <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment" />
 		<exclude name="MediaWiki.Commenting.LicenseComment" />
 		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
     </rule>
@@ -53,11 +54,6 @@
 		<properties>
 			<property name="spacing" value="1" />
 			<property name="ignoreNewlines" value="true" />
-		</properties>
-	</rule>
-	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
-		<properties>
-			<property name="spacing" value="1" />
 		</properties>
 	</rule>
 	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
