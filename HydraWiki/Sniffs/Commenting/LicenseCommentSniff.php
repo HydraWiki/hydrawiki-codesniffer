@@ -170,7 +170,6 @@ class LicenseCommentSniff implements Sniff {
 			default:
 				return true;
 		}
-
 		return false;
 	}
 

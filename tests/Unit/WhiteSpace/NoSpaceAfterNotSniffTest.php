@@ -18,6 +18,7 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 
 		$this->sniff = new NoSpaceAfterNotSniff();
 	}
+
 	/**
 	 * test sniff when no whitespace is present
 	 * @covers NoSpaceAfterNotSniff::process
