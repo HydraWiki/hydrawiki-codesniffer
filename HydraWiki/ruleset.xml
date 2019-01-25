@@ -55,7 +55,17 @@
 			<property name="ignoreNewlines" value="true" />
 		</properties>
 	</rule>
-
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="spacingAfterLast" value="0" />
+		</properties>
+	</rule>
 	<!-- set a resonable line length -->
 	<rule ref="Generic.Files.LineLength">
 		<properties>
