@@ -45,7 +45,7 @@ class LicenseCommentSniff implements Sniff {
 	 * @return array
 	 */
 	public function register() {
-		return [ T_DOC_COMMENT_OPEN_TAG ];
+		return [T_DOC_COMMENT_OPEN_TAG];
 	}
 
 	/**
@@ -215,7 +215,7 @@ class LicenseCommentSniff implements Sniff {
 	 */
 	private function isValidProprietaryLicense($license) {
 		if (strtolower($license) == 'proprietary') {
-			 return true;
+			return true;
 		}
 	}
 

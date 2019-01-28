@@ -27,9 +27,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	 * @inheritDoc
 	 */
 	public function register() {
-		return [
-			T_COMMENT
-		];
+		return [T_COMMENT];
 	}
 
 	/**
@@ -68,8 +66,8 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 					rtrim($currToken['content']) === '#')
 			) {
 				return;
-			// Checking whether there is a space between the comment delimiter
-			// and the comment
+				// Checking whether there is a space between the comment delimiter
+				// and the comment
 			} elseif (substr($currToken['content'], 0, 2) === '//') {
 				$commentContent = substr($currToken['content'], 2);
 				$commentTrim = ltrim($commentContent);
@@ -86,8 +84,8 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 						$phpcsFile->fixer->replaceToken($stackPtr, $newContent);
 					}
 				}
-			// Finding what the comment delimiter is and checking whether there is a space
-			// between the comment delimiter and the comment.
+				// Finding what the comment delimiter is and checking whether there is a space
+				// between the comment delimiter and the comment.
 			} elseif ($currToken['content'][0] === '#') {
 				// Find number of `#` used.
 				$startComment = 0;
