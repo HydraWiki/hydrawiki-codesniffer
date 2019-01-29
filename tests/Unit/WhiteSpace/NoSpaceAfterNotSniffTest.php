@@ -50,7 +50,7 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 			->with(
 				$this->stringContains('There must not be a space after a NOT operator; %s found'),
 				$this->equalTo(0),
-				$this->equalTo('Incorrect'),
+				$this->equalTo('SpaceAfterNot'),
 				$this->identicalTo([1])
 			)
 			->willReturn(false);
