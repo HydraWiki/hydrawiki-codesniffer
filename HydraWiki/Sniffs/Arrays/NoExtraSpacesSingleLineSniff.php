@@ -18,7 +18,7 @@ namespace HydraWiki\Sniffs\Arrays;
 
 use PHP_CodeSniffer\Sniffs\AbstractArraySniff;
 
-class NoExtraSpacesSniff extends AbstractArraySniff {
+class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
 
 	/**
 	 * The number of spaces each array key should be indented.

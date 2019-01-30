@@ -31,6 +31,7 @@
 			<property name="indent" value="4" />
 		</properties>
 	</rule>
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
 	<!-- Multiline object chain -->
 	<rule ref="PEAR.WhiteSpace.ObjectOperatorIndent">
 		<properties>
