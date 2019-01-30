@@ -3,22 +3,52 @@
 	<description>A coding standard for HydraWiki.</description>
 	<!-- Apply MediaWiki ruleset without SpaceyParenthesis -->
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
-        <exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment" />
 		<exclude name="MediaWiki.Commenting.LicenseComment" />
-		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
-    </rule>
+	</rule>
+	<!-- Make tab idents checkable and fixable -->
+	<arg name="tab-width" value="4"/>
+	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="indent" value="4"/>
+			<property name="tabIndent" value="true"/>
+			<property name="ignoreIndentationTokens" type="array">
+                <element value="T_COMMENT"/>
+                <element value="T_DOC_COMMENT_OPEN_TAG"/>
+                <element value="T_CONSTANT_ENCAPSED_STRING"/>
+                <element value="T_OBJECT_OPERATOR"/>
+                <element value="T_LNUMBER"/>
+                <element value="T_STRING"/>
+            </property>
+            <property name="exact" value="true" />
+		</properties>
+	</rule>
+	<!-- Setup correct indent for Arrays -->
+	<rule ref="Generic.Arrays.ArrayIndent">
+		<properties>
+			<property name="indent" value="4" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing" />
+	<!-- Multiline object chain -->
+	<rule ref="PEAR.WhiteSpace.ObjectOperatorIndent">
+		<properties>
+			<property name="indent" value="4" />
+		</properties>
+	</rule>
 	<!-- MediaWiki Adjustments -->
 	<rule ref="MediaWiki.NamingConventions.PrefixedGlobalFunctions">
-        <properties>
-            <property name="ignoreList" type="array" value="bfNormalizeTitleStrReplace,bfNormalizeTitleStrTr,cdbShowHelp,codepointToUtf8,compare_point,cssfilter,escapeSingleString,findAuxFile,findFiles,getEscapedProfileUrl,getFileCommentFromSourceWiki,getFileUserFromSourceWiki,hexSequenceToUtf8,mccGetHelp,mccShowUsage,mimeTypeMatch,moveToExternal,NothingFunction,NothingFunctionData,resolveStub,resolveStubs,showUsage,splitFilename,utf8ToCodepoint,utf8ToHexSequence" />
-        </properties>
-    </rule>
-    <rule ref="MediaWiki.NamingConventions.ValidGlobalName">
-        <properties>
-            <property name="ignoreList" type="array" value="$IP,$messageMemc,$parserMemc" />
-        </properties>
-    </rule>
+		<properties>
+			<property name="ignoreList" type="array" value="bfNormalizeTitleStrReplace,bfNormalizeTitleStrTr,cdbShowHelp,codepointToUtf8,compare_point,cssfilter,escapeSingleString,findAuxFile,findFiles,getEscapedProfileUrl,getFileCommentFromSourceWiki,getFileUserFromSourceWiki,hexSequenceToUtf8,mccGetHelp,mccShowUsage,mimeTypeMatch,moveToExternal,NothingFunction,NothingFunctionData,resolveStub,resolveStubs,showUsage,splitFilename,utf8ToCodepoint,utf8ToHexSequence" />
+		</properties>
+	</rule>
+	<rule ref="MediaWiki.NamingConventions.ValidGlobalName">
+		<properties>
+			<property name="ignoreList" type="array" value="$IP,$messageMemc,$parserMemc" />
+		</properties>
+	</rule>
 	<rule ref="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures">
 		<severity>0</severity>
 	</rule>
@@ -35,7 +65,7 @@
 	<rule ref="PSR2.ControlStructures.ControlStructureSpacing" />
 	<rule ref="PSR2.Methods.FunctionCallSignature">
 		<properties>
-			<property name="indent" value="1" />
+			<property name="indent" value="4" />
 		</properties>
 	</rule>
 	<rule ref="PSR2.Methods.FunctionCallSignature.OpeningIndent">
@@ -69,11 +99,10 @@
 			<property name="absoluteLineLimit" value="0"/>
 		</properties>
 	</rule>
-
-    <!-- exclude common folders from version control or build tools -->
+	<!-- exclude common folders from version control or build tools -->
 	<exclude-pattern type="relative">^\.git</exclude-pattern>
 	<exclude-pattern type="relative">^vendor</exclude-pattern>
 	<exclude-pattern type="relative">^node_modules</exclude-pattern>
 	<exclude-pattern type="relative">^extensions/</exclude-pattern>
-    <exclude-pattern type="relative">^skins/</exclude-pattern>
+	<exclude-pattern type="relative">^skins/</exclude-pattern>
 </ruleset>

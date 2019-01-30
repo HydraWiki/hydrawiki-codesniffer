@@ -61,7 +61,7 @@ class NoSpaceAfterNotSniff implements Sniff {
 			return;
 		}
 		$message = 'There must not be a space after a NOT operator; %s found';
-		$fix     = $phpcsFile->addFixableError($message, $stackPtr, 'Incorrect', [$spacing]);
+		$fix     = $phpcsFile->addFixableError($message, $stackPtr, 'SpaceAfterNot', [$spacing]);
 		if ($fix === true) {
 			$phpcsFile->fixer->replaceToken(($stackPtr + 1), '');
 		}

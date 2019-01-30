@@ -27,9 +27,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	 * @inheritDoc
 	 */
 	public function register() {
-		return [
-			T_COMMENT
-		];
+		return [T_COMMENT];
 	}
 
 	/**
@@ -41,6 +39,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 		$tokens = $phpcsFile->getTokens();
 		$currToken = $tokens[$stackPtr];
 		$preToken = $phpcsFile->findPrevious(T_WHITESPACE, $stackPtr - 1, null, true);
+		// Test if comment starts on a new line
 		if ($preToken !== false &&
 			$tokens[$preToken]['line'] === $tokens[$stackPtr]['line']
 		) {
@@ -50,65 +49,117 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 				'NewLineComment'
 			);
 		}
-		if ($currToken['code'] === T_COMMENT) {
-			// Accounting for multiple line comments, as single line comments
-			// use only '//' and '#'
-			// Also ignoring PHPDoc comments starting with '///',
-			// as there are no coding standards documented for these
-			if (substr($currToken['content'], 0, 2) === '/*'
-				|| substr($currToken['content'], 0, 3) === '///'
-			) {
-				return;
-			}
 
-			// Checking whether the comment is an empty one
-			if ((substr($currToken['content'], 0, 2) === '//' &&
-				rtrim($currToken['content']) === '//') ||
-				($currToken['content'][0] === '#' &&
-					rtrim($currToken['content']) === '#')
-			) {
-				return;
-			// Checking whether there is a space between the comment delimiter
-			// and the comment
-			} elseif (substr($currToken['content'], 0, 2) === '//') {
-				$commentContent = substr($currToken['content'], 2);
-				$commentTrim = ltrim($commentContent);
-				if (strlen($commentContent) == strlen($commentTrim)) {
-					$error = 'At least a single space expected after "//"';
-					$fix = $phpcsFile->addFixableWarning(
-						$error,
-						$stackPtr,
-						'SingleSpaceBeforeSingleLineComment'
-					);
-					if ($fix) {
-						$newContent = '// ';
-						$newContent .= $commentTrim;
-						$phpcsFile->fixer->replaceToken($stackPtr, $newContent);
-					}
-				}
-			// Finding what the comment delimiter is and checking whether there is a space
-			// between the comment delimiter and the comment.
-			} elseif ($currToken['content'][0] === '#') {
-				// Find number of `#` used.
-				$startComment = 0;
-				while ($currToken['content'][$startComment] === '#') {
-					$startComment += 1;
-				}
-				if ($currToken['content'][$startComment] !== ' ') {
-					$error = 'At least a single space expected after "#"';
-					$fix = $phpcsFile->addFixableWarning(
-						$error,
-						$stackPtr,
-						'SingleSpaceBeforeSingleLineComment'
-					);
-					if ($fix) {
-						$content = $currToken['content'];
-						$newContent = '# ';
-						$tmpContent = substr($content, 1);
-						$newContent .= ltrim($tmpContent);
-						$phpcsFile->fixer->replaceToken($stackPtr, $newContent);
-					}
-				}
+		// Validate Current Token
+		if (!$this->isComment($currToken) ||
+			$this->isDocBlockComment($currToken) ||
+			$this->isEmptyComment($currToken)
+		) {
+			return;
+		}
+
+		// Checking whether there is a space between the comment delimiter
+		// and the comment
+		if (substr($currToken['content'], 0, 2) === '//') {
+			$this->handleDoubleSlashComment($phpcsFile, $stackPtr, $currToken);
+			return;
+		}
+
+		// Finding what the comment delimiter is and checking whether there is a space
+		// between the comment delimiter and the comment.
+		if ($currToken['content'][0] === '#') {
+			$this->handleHashComment($phpcsFile, $stackPtr, $currToken);
+		}
+	}
+
+	/**
+	 * Check contents of current token for empty state
+	 *
+	 * @param array $currToken
+	 * @return boolean
+	 */
+	private function isEmptyComment($currToken) {
+		return (
+			(substr($currToken['content'], 0, 2) === '//' && rtrim($currToken['content']) === '//') ||
+			($currToken['content'][0] === '#' && rtrim($currToken['content']) === '#')
+		);
+	}
+
+	/**
+	 * Check contents of current token for doc block
+	 *
+	 * @param array $currToken
+	 * @return boolean
+	 */
+	private function isDocBlockComment($currToken) {
+		// Accounting for multiple line comments, as single line comments
+		// use only '//' and '#'
+		// Also ignoring PHPDoc comments starting with '///',
+		// as there are no coding standards documented for these
+		return (substr($currToken['content'], 0, 2) === '/*' || substr($currToken['content'], 0, 3) === '///');
+	}
+
+	/**
+	 * Check if current token is a comment token
+	 *
+	 * @param [type] $currToken
+	 * @return boolean
+	 */
+	private function isComment($currToken) {
+		return $currToken['code'] === T_COMMENT;
+	}
+
+	/**
+	 * handle any double slash  style'//' comments
+	 *
+	 * @param File $phpcsFile
+	 * @param int $stackPtr
+	 * @param array $currToken
+	 * @return void
+	 */
+	private function handleDoubleSlashComment($phpcsFile, $stackPtr, $currToken) {
+		$commentContent = substr($currToken['content'], 2);
+		$commentTrim = ltrim($commentContent);
+		if (strlen($commentContent) == strlen($commentTrim)) {
+			$fix = $phpcsFile->addFixableWarning(
+				'At least a single space expected after "//"',
+				$stackPtr,
+				'SingleSpaceBeforeSingleLineComment'
+			);
+			if ($fix) {
+				$newContent = '// ';
+				$newContent .= $commentTrim;
+				$phpcsFile->fixer->replaceToken($stackPtr, $newContent);
+			}
+		}
+	}
+
+	/**
+	 * handle any hash style '#' comments
+	 *
+	 * @param File $phpcsFile
+	 * @param int $stackPtr
+	 * @param array $currToken
+	 * @return void
+	 */
+	private function handleHashComment($phpcsFile, $stackPtr, $currToken) {
+		// Find number of `#` used.
+		$startComment = 0;
+		while ($currToken['content'][$startComment] === '#') {
+			$startComment += 1;
+		}
+		if ($currToken['content'][$startComment] !== ' ') {
+			$fix = $phpcsFile->addFixableWarning(
+				'At least a single space expected after "#"',
+				$stackPtr,
+				'SingleSpaceBeforeSingleLineComment'
+			);
+			if ($fix) {
+				$content = $currToken['content'];
+				$newContent = '# ';
+				$tmpContent = substr($content, 1);
+				$newContent .= ltrim($tmpContent);
+				$phpcsFile->fixer->replaceToken($stackPtr, $newContent);
 			}
 		}
 	}

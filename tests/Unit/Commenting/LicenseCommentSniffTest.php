@@ -67,20 +67,20 @@ class LicenseCommentSniffTest extends BaseTest {
 		];
 
 		$this->fileMock->method('getTokens')
-			 ->willReturn($tokens);
+			->willReturn($tokens);
 
 		$this->fileMock->method('findNext')
-			 ->willReturn(8);
+			->willReturn(8);
 
 		$this->fileMock->expects($this->once())
-			 ->method('addWarning')
-			 ->with(
-					$this->stringContains('Invalid SPDX license identifier "%s", see <https://spdx.org/licenses/>'),
-					$this->equalTo(6),
-					$this->equalTo('InvalidLicenseTag'),
-					$this->identicalTo(['MIT2'])
-				)
-			 ->willReturn(false);
+			->method('addWarning')
+			->with(
+				$this->stringContains('Invalid SPDX license identifier "%s", see <https://spdx.org/licenses/>'),
+				$this->equalTo(6),
+				$this->equalTo('InvalidLicenseTag'),
+				$this->identicalTo(['MIT2'])
+			)
+			->willReturn(false);
 
 		$this->sniff->process($this->fileMock, 0);
 	}
@@ -127,18 +127,18 @@ class LicenseCommentSniffTest extends BaseTest {
 		];
 
 		$this->fileMock->method('getTokens')
-			 ->willReturn($tokens);
+			->willReturn($tokens);
 
 		$this->fileMock->method('findNext')
-			 ->willReturn(8);
+			->willReturn(8);
 
 		$this->spdxMock->expects($this->exactly(1))
-			 ->method('isDeprecatedByIdentifier')
-			 ->willReturn(false);
+			->method('isDeprecatedByIdentifier')
+			->willReturn(false);
 
 		$this->spdxMock->expects($this->exactly(2))
-			 ->method('validate')
-			 ->willReturn(true);
+			->method('validate')
+			->willReturn(true);
 
 		$this->sniff->process($this->fileMock, 0);
 	}
@@ -185,28 +185,28 @@ class LicenseCommentSniffTest extends BaseTest {
 		];
 
 		$this->fileMock->method('getTokens')
-			 ->willReturn($tokens);
+			->willReturn($tokens);
 
 		$this->fileMock->method('findNext')
-			 ->willReturn(8);
+			->willReturn(8);
 
 		$this->spdxMock->expects($this->exactly(1))
-			 ->method('isDeprecatedByIdentifier')
-			 ->willReturn(true);
+			->method('isDeprecatedByIdentifier')
+			->willReturn(true);
 
 		$this->spdxMock->expects($this->exactly(1))
-			 ->method('validate')
-			 ->willReturn(true);
+			->method('validate')
+			->willReturn(true);
 
 		$this->fileMock->expects($this->once())
-			 ->method('addWarning')
-			 ->with(
-					$this->stringContains('Deprecated SPDX license identifier "%s", see <https://spdx.org/licenses/>'),
-					$this->equalTo(6),
-					$this->equalTo('DeprecatedLicenseTag'),
-					$this->identicalTo(['GPL-2.0+'])
-				)
-			 ->willReturn(false);
+			->method('addWarning')
+			->with(
+				$this->stringContains('Deprecated SPDX license identifier "%s", see <https://spdx.org/licenses/>'),
+				$this->equalTo(6),
+				$this->equalTo('DeprecatedLicenseTag'),
+				$this->identicalTo(['GPL-2.0+'])
+			)
+			->willReturn(false);
 
 		$this->sniff->process($this->fileMock, 0);
 	}

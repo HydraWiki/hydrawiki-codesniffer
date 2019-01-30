@@ -26,10 +26,10 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	 */
 	public function testProcessWithNoWhitespace() {
 		$this->fileMock->method('getTokens')
-			 ->willReturn(['', ['code' => '', 'length' => 0]]);
+			->willReturn(['', ['code' => '', 'length' => 0]]);
 
 		$this->fileMock->expects($this->exactly(0))
-			 ->method('addFixableError');
+			->method('addFixableError');
 
 		$result = $this->sniff->process($this->fileMock, 0);
 
@@ -43,17 +43,17 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	 */
 	public function testProcessWithOneWhitespace() {
 		$this->fileMock->method('getTokens')
-			 ->willReturn(['', ['code' => T_WHITESPACE, 'length' => 1]]);
+			->willReturn(['', ['code' => T_WHITESPACE, 'length' => 1]]);
 
 		$this->fileMock->expects($this->once())
-			 ->method('addFixableError')
-			 ->with(
-					$this->stringContains('There must not be a space after a NOT operator; %s found'),
-					$this->equalTo(0),
-					$this->equalTo('Incorrect'),
-					$this->identicalTo([1])
-				)
-			 ->willReturn(false);
+			->method('addFixableError')
+			->with(
+				$this->stringContains('There must not be a space after a NOT operator; %s found'),
+				$this->equalTo(0),
+				$this->equalTo('SpaceAfterNot'),
+				$this->identicalTo([1])
+			)
+			->willReturn(false);
 
 		$this->sniff->process($this->fileMock, 0);
 	}
@@ -65,14 +65,14 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	 */
 	public function testProcessWithOneWhitespaceFixer() {
 		$this->fileMock->method('getTokens')
-			 ->willReturn(['', ['code' => T_WHITESPACE, 'length' => 1]]);
+			->willReturn(['', ['code' => T_WHITESPACE, 'length' => 1]]);
 
 		$this->fileMock->expects($this->once())
-			 ->method('addFixableError')
-			 ->willReturn(true);
+			->method('addFixableError')
+			->willReturn(true);
 
 		$this->fileMock->fixer->expects($this->once())
-			 ->method('replaceToken');
+			->method('replaceToken');
 
 		$this->sniff->process($this->fileMock, 0);
 	}
