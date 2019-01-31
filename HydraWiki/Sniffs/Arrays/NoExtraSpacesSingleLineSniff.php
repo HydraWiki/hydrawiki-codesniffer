@@ -16,6 +16,7 @@
 
 namespace HydraWiki\Sniffs\Arrays;
 
+use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\AbstractArraySniff;
 
 class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
@@ -30,11 +31,11 @@ class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
 	/**
 	 * Processes a single-line array definition.
 	 *
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile The current file being checked.
-	 * @param int $stackPtr The position of the current token in the stack passed in $tokens.
-	 * @param int $arrayStart The token that starts the array definition.
-	 * @param int $arrayEnd The token that ends the array definition.
-	 * @param array $indices An array of token positions for the array keys, double arrows, and values.
+	 * @param File    $phpcsFile  The current file being checked.
+	 * @param integer $stackPtr   The position of the current token in the stack passed in $tokens.
+	 * @param integer $arrayStart The token that starts the array definition.
+	 * @param integer $arrayEnd   The token that ends the array definition.
+	 * @param array   $indices    An array of token positions for the array keys, double arrows, and values.
 	 *
 	 * @return void
 	 */
@@ -46,11 +47,11 @@ class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
 	/**
 	 * Processes a multi-line array definition.
 	 *
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile The current file being checked.
-	 * @param int $stackPtr The position of the current token in the stack passed in $tokens.
-	 * @param int $arrayStart The token that starts the array definition.
-	 * @param int $arrayEnd The token that ends the array definition.
-	 * @param array $indices An array of token positions for the array keys, double arrows, and values.
+	 * @param File    $phpcsFile  The current file being checked.
+	 * @param integer $stackPtr   The position of the current token in the stack passed in $tokens.
+	 * @param integer $arrayStart The token that starts the array definition.
+	 * @param integer $arrayEnd   The token that ends the array definition.
+	 * @param array   $indices    An array of token positions for the array keys, double arrows, and values.
 	 *
 	 * @return void
 	 */
@@ -61,8 +62,9 @@ class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
 	/**
 	 * Process the starting brace of a short array
 	 *
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $arrayStart
+	 * @param File    $phpcsFile
+	 * @param integer $arrayStart
+	 *
 	 * @return void
 	 */
 	private function handleArrayStart($phpcsFile, $arrayStart) {
@@ -84,8 +86,9 @@ class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
 	/**
 	 * Process the closing brace of a short array
 	 *
-	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
-	 * @param int $arrayEnd
+	 * @param File    $phpcsFile
+	 * @param integer $arrayEnd
+	 *
 	 * @return void
 	 */
 	private function handleArrayEnd($phpcsFile, $arrayEnd) {

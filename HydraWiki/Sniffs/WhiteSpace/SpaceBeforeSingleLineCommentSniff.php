@@ -3,17 +3,17 @@
  * Curse Inc.
  * SpaceBeforeSingleLineCommentSniff
  *
- * Verify comments are preceeded by a single space.
+ * Verify comments are preceded by a single space.
  *
  * This file was copied from MediaWiki Codesniffer before being modified
  * File: MediaWiki/Sniffs/WhiteSpace/SpaceBeforeSingleLineCommentSniff.php
  * From repository: https://github.com/wikimedia/mediawiki-tools-codesniffer
  *
- * @package	HydraWiki
- * @author Dieser Benutzer
- * @author Samuel Hilson <shhilson@curse.com>
+ * @package   HydraWiki
+ * @author    Dieser Benutzer
+ * @author    Samuel Hilson <shhilson@curse.com>
  * @copyright https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/COPYRIGHT
- * @license https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
+ * @license   https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
  */
 
 namespace HydraWiki\Sniffs\WhiteSpace;
@@ -24,15 +24,20 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 class SpaceBeforeSingleLineCommentSniff implements Sniff {
 
 	/**
-	 * @inheritDoc
+	 * Returns an array of tokens this test wants to listen for.
+	 *
+	 * @return array
 	 */
 	public function register() {
 		return [T_COMMENT];
 	}
 
 	/**
-	 * @param File $phpcsFile
-	 * @param int $stackPtr The current token index.
+	 * Process the file
+	 *
+	 * @param File    $phpcsFile
+	 * @param integer $stackPtr  The current token index.
+	 *
 	 * @return void
 	 */
 	public function process(File $phpcsFile, $stackPtr) {
@@ -76,6 +81,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	 * Check contents of current token for empty state
 	 *
 	 * @param array $currToken
+	 *
 	 * @return boolean
 	 */
 	private function isEmptyComment($currToken) {
@@ -89,6 +95,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	 * Check contents of current token for doc block
 	 *
 	 * @param array $currToken
+	 *
 	 * @return boolean
 	 */
 	private function isDocBlockComment($currToken) {
@@ -103,6 +110,7 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	 * Check if current token is a comment token
 	 *
 	 * @param [type] $currToken
+	 *
 	 * @return boolean
 	 */
 	private function isComment($currToken) {
@@ -110,11 +118,12 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	}
 
 	/**
-	 * handle any double slash  style'//' comments
+	 * Handle any double slash  style'//' comments
 	 *
-	 * @param File $phpcsFile
-	 * @param int $stackPtr
-	 * @param array $currToken
+	 * @param File    $phpcsFile
+	 * @param integer $stackPtr
+	 * @param array   $currToken
+	 *
 	 * @return void
 	 */
 	private function handleDoubleSlashComment($phpcsFile, $stackPtr, $currToken) {
@@ -135,11 +144,12 @@ class SpaceBeforeSingleLineCommentSniff implements Sniff {
 	}
 
 	/**
-	 * handle any hash style '#' comments
+	 * Handle any hash style '#' comments
 	 *
-	 * @param File $phpcsFile
-	 * @param int $stackPtr
-	 * @param array $currToken
+	 * @param File    $phpcsFile
+	 * @param integer $stackPtr
+	 * @param array   $currToken
+	 *
 	 * @return void
 	 */
 	private function handleHashComment($phpcsFile, $stackPtr, $currToken) {

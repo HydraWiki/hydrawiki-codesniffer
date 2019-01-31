@@ -6,6 +6,11 @@ use Test\BaseTest;
 use HydraWiki\Sniffs\WhiteSpace\NoSpaceAfterNotSniff;
 
 class NoSpaceAfterNotSniffTest extends BaseTest {
+	/**
+	 * Container for sniff under test
+	 *
+	 * @var NoSpaceAfterNotSniff
+	 */
 	protected $sniff;
 
 	/**
@@ -20,7 +25,8 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	}
 
 	/**
-	 * test sniff when no whitespace is present
+	 * Test sniff when no whitespace is present
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */
@@ -37,7 +43,8 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	}
 
 	/**
-	 * test sniff when whitespace is present
+	 * Test sniff when whitespace is present
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */
@@ -59,7 +66,8 @@ class NoSpaceAfterNotSniffTest extends BaseTest {
 	}
 
 	/**
-	 * test sniff when whitespace is present
+	 * Test sniff when whitespace is present
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */

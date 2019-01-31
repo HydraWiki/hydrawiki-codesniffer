@@ -7,11 +7,11 @@
  * File: MediaWiki/Sniffs/Commenting/LicenseCommentSniff.php
  * From repository: https://github.com/wikimedia/mediawiki-tools-codesniffer
  *
- * @package	HydraWiki
- * @author Dieser Benutzer
- * @author Samuel Hilson <shhilson@curse.com>
+ * @package   HydraWiki
+ * @author    Dieser Benutzer
+ * @author    Samuel Hilson <shhilson@curse.com>
  * @copyright https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/COPYRIGHT
- * @license https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
+ * @license   https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
  */
 namespace HydraWiki\Sniffs\Commenting;
 
@@ -20,12 +20,32 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class LicenseCommentSniff implements Sniff {
-
+	/**
+	 * Container for File class
+	 *
+	 * @var File
+	 */
 	private $file;
+
+	/**
+	 * Container for tokens array
+	 *
+	 * @var array
+	 */
 	private $tokens;
+
+	/**
+	 * End pointer
+	 *
+	 * @var integer
+	 */
 	private $end;
 
-	/** @var SpdxLicenses */
+	/**
+	 * Container for SpdxLicense class
+	 *
+	 * @var SpdxLicenses
+	 */
 	private $spdx = null;
 
 	/**
@@ -51,9 +71,10 @@ class LicenseCommentSniff implements Sniff {
 	/**
 	 * Initialize
 	 *
-	 * @param File $phpcsFile
-	 * @param int $stackPtr
+	 * @param File              $phpcsFile
+	 * @param integer           $stackPtr
 	 * @param SpdxLicenses|null $spdx
+	 *
 	 * @return void
 	 */
 	public function initialize(File $phpcsFile, $stackPtr, SpdxLicenses $spdx = null) {
@@ -68,8 +89,9 @@ class LicenseCommentSniff implements Sniff {
 	/**
 	 * Processes this test, when one of its tokens is encountered.
 	 *
-	 * @param File $phpcsFile The file being scanned.
-	 * @param int $stackPtr The position of the current token in the stack passed in $tokens.
+	 * @param File    $phpcsFile The file being scanned.
+	 * @param integer $stackPtr  The position of the current token in the stack passed in $tokens.
+	 *
 	 * @return void
 	 */
 	public function process(File $phpcsFile, $stackPtr) {
@@ -81,10 +103,11 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * handle a single doc line
+	 * Handle a single doc line
 	 *
 	 * @param string $tag
-	 * @return mixed
+	 *
+	 * @return void
 	 */
 	private function processDocTag($tag) {
 		if ($this->isCorrectTag($tag)) {
@@ -119,7 +142,7 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * get or initialize SpdxLicenses library
+	 * Get or initialize SpdxLicenses library
 	 *
 	 * @return SpdxLicenses
 	 */
@@ -131,15 +154,16 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * normalize license text
+	 * Normalize license text
 	 *
 	 * @param string $next
+	 *
 	 * @return string
 	 */
 	private function getLicenseFromTag($next) {
 		$license = $this->tokens[$next]['content'];
 
-		// license can contain a url, use the text behind it
+		// License can contain a url, use the text behind it
 		if (preg_match('/^https?:\/\/[^\s]+\s+(.*)/', $license, $match)) {
 			$license = $match[1];
 		}
@@ -147,9 +171,10 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * check if we are on the correct license tag
+	 * Check if we are on the correct license tag
 	 *
 	 * @param string $tag
+	 *
 	 * @return boolean
 	 */
 	private function isCorrectTag($tag) {
@@ -174,10 +199,11 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * check the tag location is in file level doc comment
+	 * Check the tag location is in file level doc comment
 	 *
 	 * @param string $tag
-	 * @return boolean
+	 *
+	 * @return void
 	 */
 	private function isValidTagLocation($tag) {
 		if ($this->tokens[$tag]['level'] !== 0) {
@@ -190,10 +216,11 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * check that tag has some text after @license
+	 * Check that tag has some text after @license
 	 *
 	 * @param string $tag
 	 * @param string $next
+	 *
 	 * @return boolean
 	 */
 	private function hasTextAfterTag($tag, $next) {
@@ -208,9 +235,10 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * check for a private license
+	 * Check for a private license
 	 *
 	 * @param string $license
+	 *
 	 * @return boolean
 	 */
 	private function isValidProprietaryLicense($license) {
@@ -220,10 +248,11 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * check if the license is marked as deprecated
+	 * Check if the license is marked as deprecated
 	 *
 	 * @param string $tag
 	 * @param string $license
+	 *
 	 * @return boolean
 	 */
 	private function isLicenseDeprecated($tag, $license) {
@@ -244,12 +273,13 @@ class LicenseCommentSniff implements Sniff {
 	}
 
 	/**
-	 * checks that the license is a valid license from spdx
+	 * Checks that the license is a valid license from spdx
 	 *
 	 * @param string $tag
 	 * @param string $next
 	 * @param string $license
-	 * @return boolean
+	 *
+	 * @return void
 	 */
 	private function handleInvalidLicense($tag, $next, $license) {
 		// Initialize the spdx license validator
@@ -273,7 +303,7 @@ class LicenseCommentSniff implements Sniff {
 			}
 		}
 
-		// handle fixable license problem
+		// Handle fixable license problem
 		if ($fixable !== null) {
 			$fix = $this->file->addFixableWarning(
 				'Invalid SPDX license identifier "%s", see <https://spdx.org/licenses/>',
@@ -287,7 +317,7 @@ class LicenseCommentSniff implements Sniff {
 			return;
 		}
 
-		// report un-fixable problems
+		// Report un-fixable problems
 		$this->file->addWarning(
 			'Invalid SPDX license identifier "%s", see <https://spdx.org/licenses/>',
 			$tag,

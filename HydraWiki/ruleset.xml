@@ -6,6 +6,20 @@
 		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment" />
 		<exclude name="MediaWiki.Commenting.LicenseComment" />
+		<exclude name="MediaWiki.Commenting.FunctionComment" />
+	</rule>
+	<rule ref="Generic.Commenting" />
+	<rule ref="Squiz.Commenting">
+		<!-- Remove the more annoying requirements -->
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.ClosingDeclarationComment" />
+		<exclude name="Squiz.Commenting.FileComment" />
+		<exclude name="Squiz.Commenting.FunctionComment.TypeHintMissing" />
+		<exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing" />
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
+		<exclude name="Squiz.Commenting.PostStatementComment" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
 	</rule>
 	<!-- Make tab idents checkable and fixable -->
 	<arg name="tab-width" value="4"/>

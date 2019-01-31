@@ -6,6 +6,11 @@ use Test\BaseTest;
 use HydraWiki\Sniffs\WhiteSpace\SpaceBeforeSingleLineCommentSniff;
 
 class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
+	/**
+	 * Container for sniff under test
+	 *
+	 * @var SpaceBeforeSingleLineCommentSniff
+	 */
 	protected $sniff;
 
 	/**
@@ -20,7 +25,8 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 	}
 
 	/**
-	 * test sniff with correctly formatted comment starting with '//'
+	 * Test sniff with correctly formatted comment starting with '//'
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -57,6 +63,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with correctly formatted comment starting with '#'
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -93,6 +100,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with comment at the end of a line of code
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -134,6 +142,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with incorrectly formatted comment starting with '//'
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -160,7 +169,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 		$this->fileMock->expects($this->exactly(0))
 			->method('addWarning');
 
-		// test that a fixable warning is created.
+		// Test that a fixable warning is created.
 		$this->fileMock->expects($this->once())
 			->method('addFixableWarning')
 			->with(
@@ -170,7 +179,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 			)
 			->willReturn(true);
 
-		// test that the coment is fixed.
+		// Test that the comment is fixed.
 		$this->fileMock->fixer->expects($this->once())
 			->method('replaceToken')
 			->with(
@@ -185,6 +194,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with incorrectly formatted comment starting with '#'
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -211,7 +221,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 		$this->fileMock->expects($this->exactly(0))
 			->method('addWarning');
 
-		// test that a fixable warning is created.
+		// Test that a fixable warning is created.
 		$this->fileMock->expects($this->once())
 			->method('addFixableWarning')
 			->with(
@@ -221,7 +231,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 			)
 			->willReturn(true);
 
-		// test that the coment is fixed.
+		// Test that the comment is fixed.
 		$this->fileMock->fixer->expects($this->once())
 			->method('replaceToken')
 			->with(
@@ -236,6 +246,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff comment from doc block
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void
@@ -272,6 +283,7 @@ class SpaceBeforeSingleLineCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with an empty comment
+	 *
 	 * @covers SpaceBeforeSingleLineCommentSniff::process
 	 *
 	 * @return void

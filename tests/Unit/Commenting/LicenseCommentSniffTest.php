@@ -7,7 +7,18 @@ use Composer\Spdx\SpdxLicenses;
 use HydraWiki\Sniffs\Commenting\LicenseCommentSniff;
 
 class LicenseCommentSniffTest extends BaseTest {
+	/**
+	 * Container for the sniff under test
+	 *
+	 * @var LicenseCommentSniff
+	 */
 	protected $sniff;
+
+	/**
+	 * Container for the SpdxLicenses class
+	 *
+	 * @var SpdxLicense
+	 */
 	protected $spdxMock;
 
 	/**
@@ -27,6 +38,7 @@ class LicenseCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with invalid license
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */
@@ -87,6 +99,7 @@ class LicenseCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with a valid license
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */
@@ -145,6 +158,7 @@ class LicenseCommentSniffTest extends BaseTest {
 
 	/**
 	 * Test sniff with a Deprecated license
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 * @return void
 	 */

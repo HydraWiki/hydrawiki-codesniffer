@@ -17,7 +17,7 @@ How to install
     ```
     {
     	"require-dev": {
-    		"hydrawiki/hydrawiki-codesniffer": "1.0.0"
+    		"hydrawiki/hydrawiki-codesniffer": "1.0.9"
     	},
     	"scripts": {
     		"test": [
