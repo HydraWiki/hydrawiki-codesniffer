@@ -6,6 +6,11 @@ use Test\BaseTest;
 use HydraWiki\Sniffs\Arrays\NoExtraSpacesSingleLineSniff;
 
 class NoExtraSpacesSingleLineSniffTest extends BaseTest {
+	/**
+	 * Container for the sniff under test
+	 *
+	 * @var NoExtraSpacingSingleLineSniff
+	 */
 	protected $sniff;
 
 	/**
@@ -21,6 +26,7 @@ class NoExtraSpacesSingleLineSniffTest extends BaseTest {
 
 	/**
 	 * Test Sniff with a good array
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 *
 	 * @return void
@@ -110,6 +116,7 @@ class NoExtraSpacesSingleLineSniffTest extends BaseTest {
 
 	/**
 	 * Test Sniff with a bad array
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 *
 	 * @return void
@@ -216,6 +223,7 @@ class NoExtraSpacesSingleLineSniffTest extends BaseTest {
 
 	/**
 	 * Test Sniff with a bad array
+	 *
 	 * @covers NoSpaceAfterNotSniff::process
 	 *
 	 * @return void
