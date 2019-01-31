@@ -1,5 +1,7 @@
 HydraWiki Coding Conventions
 ============================
+![Release Version](https://img.shields.io/github/release/HydraWiki/hydrawiki-codesniffer.svg?style=flat)
+[![Build Status](https://travis-ci.com/HydraWiki/hydrawiki-codesniffer.svg?branch=master)](https://travis-ci.com/HydraWiki/hydrawiki-codesniffer)
 
 Abstract
 --------
