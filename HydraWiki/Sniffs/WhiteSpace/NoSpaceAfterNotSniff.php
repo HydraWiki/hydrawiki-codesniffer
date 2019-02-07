@@ -9,11 +9,11 @@
  *
  * Ensures there is no space after a NOT operator.
  *
- * @package   PHP_CodeSniffer
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @author    Samuel Hilson <shhilson@curse.com>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD-3-Clause
+ * @package   HydraWiki
  */
 
 namespace HydraWiki\Sniffs\WhiteSpace;
@@ -22,7 +22,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Files\File;
 
 class NoSpaceAfterNotSniff implements Sniff {
-
 	/**
 	 * A list of tokenizers this sniff supports.
 	 *
@@ -46,8 +45,7 @@ class NoSpaceAfterNotSniff implements Sniff {
 	 * Processes this test, when one of its tokens is encountered.
 	 *
 	 * @param File    $phpcsFile The file being scanned.
-	 * @param integer $stackPtr  The position of the current token in
-	 *                             the stack passed in $tokens.
+	 * @param integer $stackPtr  The position of the current token in the $tokens.
 	 *
 	 * @return void
 	 */

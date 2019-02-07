@@ -20,26 +20,20 @@
 		<exclude name="Squiz.Commenting.PostStatementComment" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
 		<exclude name="Squiz.Commenting.InlineComment.SpacingBefore" />
+		<exclude name="Squiz.Commenting.LongConditionClosingComment" />
 	</rule>
 	<!-- Make tab idents checkable and fixable -->
 	<arg name="tab-width" value="4"/>
 	<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
-	<rule ref="Generic.WhiteSpace.ScopeIndent">
+	<rule ref="Hydrawiki.WhiteSpace.ScopeIndent">
 		<properties>
 			<property name="indent" value="4"/>
 			<property name="tabIndent" value="true"/>
+			<property name="exact" value="true" />
 			<property name="ignoreIndentationTokens" type="array">
 				<!-- These elements are handle by better rules -->
-				<element value="T_COMMENT"/>
-				<element value="T_DOC_COMMENT_OPEN_TAG"/>
-				<element value="T_CONSTANT_ENCAPSED_STRING"/>
 				<element value="T_OBJECT_OPERATOR"/>
-				<element value="T_LNUMBER"/>
-				<element value="T_STRING"/>
-				<element value="T_ARRAY"/>
-				<element value="T_OPEN_SHORT_ARRAY"/>
 			</property>
-			<property name="exact" value="true" />
 		</properties>
 	</rule>
 	<!-- Setup correct indent for Arrays -->
@@ -106,7 +100,14 @@
 	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
 		<properties>
 			<property name="spacing" value="1" />
+			<property name="spacingBeforeFirst" value="0" />
 			<property name="spacingAfterLast" value="0" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.WhiteSpace.MemberVarSpacing">
+		<properties>
+			<property name="spacing" value="1" />
+			<property name="spacingBeforeFirst" value="0" />
 		</properties>
 	</rule>
 	<!-- set a resonable line length -->
