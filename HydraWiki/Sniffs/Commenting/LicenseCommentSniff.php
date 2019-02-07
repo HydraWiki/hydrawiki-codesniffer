@@ -7,12 +7,13 @@
  * File: MediaWiki/Sniffs/Commenting/LicenseCommentSniff.php
  * From repository: https://github.com/wikimedia/mediawiki-tools-codesniffer
  *
- * @package   HydraWiki
  * @author    Dieser Benutzer
  * @author    Samuel Hilson <shhilson@curse.com>
  * @copyright https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/COPYRIGHT
  * @license   https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
+ * @package   HydraWiki
  */
+
 namespace HydraWiki\Sniffs\Commenting;
 
 use Composer\Spdx\SpdxLicenses;

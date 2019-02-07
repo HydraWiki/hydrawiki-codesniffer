@@ -12,6 +12,7 @@
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @copyright 2006-2015 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD-3-Clause
+ * @package   HydraWiki
  */
 
 namespace HydraWiki\Sniffs\Arrays;
@@ -20,7 +21,6 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\AbstractArraySniff;
 
 class NoExtraSpacesSingleLineSniff extends AbstractArraySniff {
-
 	/**
 	 * The number of spaces each array key should be indented.
 	 *

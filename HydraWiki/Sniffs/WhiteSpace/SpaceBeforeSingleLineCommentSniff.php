@@ -9,11 +9,11 @@
  * File: MediaWiki/Sniffs/WhiteSpace/SpaceBeforeSingleLineCommentSniff.php
  * From repository: https://github.com/wikimedia/mediawiki-tools-codesniffer
  *
- * @package   HydraWiki
  * @author    Dieser Benutzer
  * @author    Samuel Hilson <shhilson@curse.com>
  * @copyright https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/COPYRIGHT
  * @license   https://github.com/wikimedia/mediawiki-tools-codesniffer/blob/master/LICENSE GPL-2.0-or-later
+ * @package   HydraWiki
  */
 
 namespace HydraWiki\Sniffs\WhiteSpace;
@@ -22,7 +22,6 @@ use PHP_CodeSniffer\Files\File;
 use PHP_CodeSniffer\Sniffs\Sniff;
 
 class SpaceBeforeSingleLineCommentSniff implements Sniff {
-
 	/**
 	 * Returns an array of tokens this test wants to listen for.
 	 *
